@@ -19,7 +19,7 @@ usage: step_0.py [-h] --ligand_pdb LIGAND_PDB --cyclic_pdb CYCLIC_PDB --receptor
 
 Run simulation steps and analysis.
 
-optional arguments:
+arguments:
   -h, --help            show this help message and exit
   --ligand_pdb LIGAND_PDB
                         Path to the reference ligand PDB file. WARNING: it has to be inputs/ref/pdb/filename.pdb
@@ -32,6 +32,8 @@ optional arguments:
                         Path to functions directory
 ```
 
+**NOTE: all the files for the reference system must be inside the folder working_dir/inputs/ref/pdb/**, as specified in the warnings.
+
 ### Main algorithm run
 Then, you can run the Monte Carlo algorithm.
 
@@ -41,11 +43,11 @@ usage: main.py [-h] --base_dir BASE_DIR --input_rece_file INPUT_RECE_FILE
                  [--model_preset MODEL_PRESET] [--steps STEPS]
                  [--consensus_threshold CONSENSUS_THRESHOLD]
                  [--temperature TEMPERATURE] --ref_seq REF_SEQ
-                 --keep_pos KEEP_POS [KEEP_POS ...]
+                 --keep_pos KEEP_POS [KEEP_POS ...] --iter ITER 
 
 Run the main mutation loop with specified paths and parameters.
 
-optional arguments:
+arguments:
   -h, --help            show this help message and exit
   --base_dir BASE_DIR   Base directory path
   --input_rece_file INPUT_RECE_FILE
