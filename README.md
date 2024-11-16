@@ -10,10 +10,12 @@ By iteratively refining sequences, the method efficiently uncovers new candidate
 To run the code, install the packages listed in `requirements.txt`.  
 It is also necessary to download **ADFRsuite-1.1dev**: the download file is in the `functions` folder, where the suite must be installed.
 
-## Workflow
+## Usage
 
+### Reference system definition
 First, you have to define a reference system, consisting of the target receptor, its known ligand, and the cyclic peptide you want to optimize.
-usage: step_0.py [-h] --ligand_pdb LIGAND_PDB --cyclic_pdb CYCLIC_PDB --receptor_pdb RECEPTOR_PDB [--steps STEPS] --src_route SRC_ROUTE
+```bash
+step_0.py [-h] --ligand_pdb LIGAND_PDB --cyclic_pdb CYCLIC_PDB --receptor_pdb RECEPTOR_PDB [--steps STEPS] --src_route SRC_ROUTE
 
 Run simulation steps and analysis.
 
