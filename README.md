@@ -15,7 +15,7 @@ It is also necessary to download **ADFRsuite-1.1dev**: the download file is in t
 ### Reference system definition
 First, you have to define a reference system, consisting of the target receptor, its known ligand, and the cyclic peptide you want to optimize.
 ```bash
-step_0.py [-h] --ligand_pdb LIGAND_PDB --cyclic_pdb CYCLIC_PDB --receptor_pdb RECEPTOR_PDB [--steps STEPS] --src_route SRC_ROUTE
+usage: step_0.py [-h] --ligand_pdb LIGAND_PDB --cyclic_pdb CYCLIC_PDB --receptor_pdb RECEPTOR_PDB [--steps STEPS] --src_route SRC_ROUTE
 
 Run simulation steps and analysis.
 
@@ -30,8 +30,12 @@ optional arguments:
   --steps STEPS         Number of simulation steps.
   --src_route SRC_ROUTE
                         Path to functions directory
+```
 
+### Main algorithm run
 Then, you can run the Monte Carlo algorithm.
+
+```bash
 usage: main.py [-h] --base_dir BASE_DIR --input_rece_file INPUT_RECE_FILE
                  --ref_lig_file REF_LIG_FILE [--max_template_date MAX_TEMPLATE_DATE]
                  [--model_preset MODEL_PRESET] [--steps STEPS]
@@ -61,6 +65,8 @@ optional arguments:
   --keep_pos KEEP_POS [KEEP_POS ...]
                         Positions to keep unchanged
   --iter ITER           Number of iterations of the loop (default: 500)
+```
+
 
 
 
