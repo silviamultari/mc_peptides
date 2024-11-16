@@ -40,7 +40,7 @@ Then, you can run the Monte Carlo algorithm.
 ```bash
 usage: main.py [-h] --base_dir BASE_DIR --input_rece_file INPUT_RECE_FILE
                  --ref_lig_file REF_LIG_FILE [--max_template_date MAX_TEMPLATE_DATE]
-                 [--model_preset MODEL_PRESET] [--steps STEPS]
+                 [--model_preset MODEL_PRESET] [--steps STEPS] [--step_size STEP_SIZE]
                  [--consensus_threshold CONSENSUS_THRESHOLD]
                  [--temperature TEMPERATURE] --ref_seq REF_SEQ
                  --keep_pos KEEP_POS [KEEP_POS ...] --iter ITER 
@@ -59,6 +59,7 @@ arguments:
   --model_preset MODEL_PRESET
                         AlphaFold2 model preset (default: monomer)
   --steps STEPS         Number of simulation steps (default: 5000000)
+  --step_size STEP_SIZE Size of each simulation step (default: 0.002)
   --consensus_threshold CONSENSUS_THRESHOLD
                         Consensus threshold for acceptance (default: 3)
   --temperature TEMPERATURE
