@@ -70,6 +70,15 @@ arguments:
   --iter ITER           Number of iterations of the loop (default: 500)
 ```
 
+### (optional) Plot scores
+```bash
+usage: plot.py [-h] --directory DIRECTORY
 
+Plot the scores trough the iterations.
 
+optional arguments:
+  -h, --help            show this help message and exit
+  --directory DIRECTORY
+                        Path to the directory with the scores
+```
 
