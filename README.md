@@ -51,9 +51,9 @@ arguments:
   -h, --help            show this help message and exit
   --base_dir BASE_DIR   Base directory path
   --input_rece_file INPUT_RECE_FILE
-                        Receptor file name
+                        Receptor PDB file name
   --ref_lig_file REF_LIG_FILE
-                        Reference ligand file name
+                        Reference ligand PDB file  
   --max_template_date MAX_TEMPLATE_DATE
                         AlphaFold2 max template date (default: 2021-11-01)
   --model_preset MODEL_PRESET
