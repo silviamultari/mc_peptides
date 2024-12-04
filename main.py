@@ -24,6 +24,7 @@ parser = argparse.ArgumentParser(description="Run mutation-docking loop with spe
 parser.add_argument("--base_dir", required=True, help="Base directory path")  # ALLIANCE
 parser.add_argument("--input_rece_file", required=True, help="Receptor file name")  # rece_1AKJ
 parser.add_argument("--ref_lig_file", required=True, help="Reference ligand file name")  # lig_1AKJ
+parser.add_argument("--out_base", type=str, default="system", help="Name of the outputs for MD simulation")
 parser.add_argument("--max_template_date", default="2021-11-01", help="AlphaFold2 max template date")
 parser.add_argument("--model_preset", default="monomer", help="AlphaFold2 model preset")
 parser.add_argument("--steps", type=int, default=5000000, help="Number of simulation steps")
@@ -87,6 +88,8 @@ ref_ligand_path = f"{REF_OUTPUT_FOLDER}/{ref_lig_file}.pdbqt"
 
 old_pos = "ref"
 old_i = "seq"
+
+out_base = args.out_base
 
 # Checkpoints creation
 checkpoint_file_base = CHECKPOINT_DIR
@@ -170,8 +173,8 @@ for i in range(start_iteration,500):
             save_checkpoint(i, checkpoint_file_base, ref_seq, old_pos, old_i, interval=10)
             continue
         
-        run_analysis(BASE_DIR, pos, i)
-        reimage_trajectory(BASE_DIR, pos, i)
+        run_analysis(BASE_DIR, out_base, pos, i)
+        reimage_trajectory(BASE_DIR, out_base, pos, i)
         
         replace_ter_with_conect(f"{OUTPUT_PDB}/seq_{pos}_{i}/system_{pos}_{i}_traj_reimaged.pdb")
         replace_ter_with_conect(f"{OUTPUT_PDB}/seq_{pos}_{i}/system_{pos}_{i}_reimaged.pdb")
@@ -186,8 +189,8 @@ for i in range(start_iteration,500):
             binder="C"
         )
         
-        new_scores = scores_extraction(pos, i)
-        old_scores = scores_extraction(old_pos, old_i)
+        new_scores = scores_extraction(out_base, pos, i)
+        old_scores = scores_extraction(out_base, old_pos, old_i)
         
         delta_scores, n_neg = find_negatives(new_scores, old_scores)
         
