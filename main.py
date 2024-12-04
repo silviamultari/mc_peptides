@@ -165,7 +165,7 @@ for i in range(start_iteration,500):
         
         try:
             simulate_complex(receptor_path, f"{DOCKING_OUT_PATH}/pdb/out_{pos}_{i}.pdb",  
-                             output_base=f'{OUTPUT_PDB}/seq_{pos}_{i}/system_{pos}_{i}', 
+                             output_base=f'{OUTPUT_PDB}/seq_{pos}_{i}/{out_base}_{pos}_{i}', 
                              steps=args.steps, solvate=True)
         except Exception as e:
             print(f"Error during pos={pos}, i={i} execution: {e}")
@@ -176,12 +176,12 @@ for i in range(start_iteration,500):
         run_analysis(BASE_DIR, out_base, pos, i)
         reimage_trajectory(BASE_DIR, out_base, pos, i)
         
-        replace_ter_with_conect(f"{OUTPUT_PDB}/seq_{pos}_{i}/system_{pos}_{i}_traj_reimaged.pdb")
-        replace_ter_with_conect(f"{OUTPUT_PDB}/seq_{pos}_{i}/system_{pos}_{i}_reimaged.pdb")
+        replace_ter_with_conect(f"{OUTPUT_PDB}/seq_{pos}_{i}/{out_base}_{pos}_{i}_traj_reimaged.pdb")
+        replace_ter_with_conect(f"{OUTPUT_PDB}/seq_{pos}_{i}/{out_base}_{pos}_{i}_reimaged.pdb")
         
         score_complex(
             score_list=["bach", "pisa", "zrank", "irad", "firedock", "bmf-bluues"],
-            pdb_name=f'system_{pos}_{i}_traj_reimaged',
+            pdb_name=f'{out_base}_{pos}_{i}_traj_reimaged',
             src_route=f"{BASE_DIR}/functions",
             local_path=os.getcwd(),
             traj_path=f'{OUTPUT_PDB}/seq_{pos}_{i}',
