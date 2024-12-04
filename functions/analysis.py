@@ -1,20 +1,20 @@
 import subprocess
 
-def run_analysis(base, pos, i):
-    command = ['python', f'{base}/functions/analyse.py', '-p', f'{base}/output/complexes/seq_{pos}_{i}/system_{pos}_{i}_minimised.pdb', '-t', f'{base}/output/complexes/seq_{pos}_{i}/system_{pos}_{i}_traj.dcd', '-o', f'{base}/output/complexes/seq_{pos}_{i}/system_{pos}_{i}_reimaged', '-r']
+def run_analysis(base, out_base, pos, i):
+    command = ['python', f'{base}/functions/analyse.py', '-p', f'{base}/output/complexes/seq_{pos}_{i}/{out_base}_{pos}_{i}_minimised.pdb', '-t', f'{base}/output/complexes/seq_{pos}_{i}/{out_base}_{pos}_{i}_traj.dcd', '-o', f'{base}/output/complexes/seq_{pos}_{i}/{out_base}_{pos}_{i}_reimaged', '-r']
     subprocess.call(command)
                 
-def reimage_trajectory(base, pos, i):
-    command = ['mdconvert', f'{base}/output/complexes/seq_{pos}_{i}/system_{pos}_{i}_reimaged.dcd', '-o', f'{base}/output/complexes/seq_{pos}_{i}/system_{pos}_{i}_traj_reimaged.pdb', '-t', f'{base}/output/complexes/seq_{pos}_{i}/system_{pos}_{i}_reimaged.pdb']
+def reimage_trajectory(base, out_base, pos, i):
+    command = ['mdconvert', f'{base}/output/complexes/seq_{pos}_{i}/{out_base}_{pos}_{i}_reimaged.dcd', '-o', f'{base}/output/complexes/seq_{pos}_{i}/{out_base}_{pos}_{i}_traj_reimaged.pdb', '-t', f'{base}/output/complexes/seq_{pos}_{i}/{out_base}_{pos}_{i}_reimaged.pdb']
     subprocess.call(command)
 
     
 import re
 
-def scores_extraction(pos, i):
+def scores_extraction(out_base, pos, i):
     try:
         # Apri il file in modalità lettura
-        with open(f"score_summary_system_{pos}_{i}_traj_reimaged.txt", 'r') as file:
+        with open(f"score_summary_{out_base}_{pos}_{i}_traj_reimaged.txt", 'r') as file:
             # Leggi il contenuto del file
             text = file.read()
 
@@ -25,7 +25,7 @@ def scores_extraction(pos, i):
         return [float(num) for num in numbers]
     
     except FileNotFoundError:
-        print(f"Error: The file score_summary_system_{pos}_{i}_traj_reimaged.txt does not exist.")
+        print(f"Error: The file score_{out_base}_system_{pos}_{i}_traj_reimaged.txt does not exist.")
         return 0
     except Exception as e:
         print(f"An error occurred: {e}")
