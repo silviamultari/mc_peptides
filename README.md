@@ -39,11 +39,12 @@ Then, you can run the Monte Carlo algorithm.
 
 ```bash
 usage: main.py [-h] --base_dir BASE_DIR --input_rece_file INPUT_RECE_FILE
-                 --ref_lig_file REF_LIG_FILE [--max_template_date MAX_TEMPLATE_DATE]
+                 --ref_lig_file REF_LIG_FILE --out_base OUT_BASE
+                 [--max_template_date MAX_TEMPLATE_DATE]
                  [--model_preset MODEL_PRESET] [--steps STEPS] [--step_size STEP_SIZE]
                  [--consensus_threshold CONSENSUS_THRESHOLD]
                  [--temperature TEMPERATURE] --ref_seq REF_SEQ
-                 --keep_pos KEEP_POS [KEEP_POS ...] --iter ITER 
+                 [--keep_pos KEEP_POS KEEP_POS ...] --iter ITER 
 
 Run the main mutation loop with specified paths and parameters.
 
@@ -52,6 +53,7 @@ arguments:
   --base_dir BASE_DIR   Base directory path
   --input_rece_file INPUT_RECE_FILE
                         Receptor PDB file name
+  --out_base OUT_BASE   Base name for the outputs of the MD simulation (default: system)
   --ref_lig_file REF_LIG_FILE
                         Reference ligand PDB file  
   --max_template_date MAX_TEMPLATE_DATE
